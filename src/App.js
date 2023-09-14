@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+//import logo from "./logo.svg";
+//import "./App.css";
+import { lazy } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { Layout } from "./components/Layout";
+//import { Spinner } from "./components/Loader";
+
+const HomePage = lazy(() => import("../src/pages/HomePage"));
+const CatalogPage = lazy(() => import("../src/pages/CatalogPage"));
+const FavoritesPage = lazy(() => import("../src/pages/FavoritesPage"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload. Hello!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="catalog" element={CatalogPage} />
+        <Route path="favorites" element={FavoritesPage} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 
