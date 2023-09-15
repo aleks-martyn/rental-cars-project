@@ -1,8 +1,12 @@
 import {
   CarItem,
+  ImgWrap,
   Image,
+  FavoriteBtn,
+  HeartIcon,
   InfoWrap,
   InfoInnerWrap,
+  InfoOtherWrap,
   OtherDataWrap,
   MainInfoText,
   InfoText,
@@ -24,13 +28,12 @@ export const Car = (car) => {
     functionalities,
     rentalPrice,
     rentalCompany,
-    address,
+    shortAddress,
     rentalConditions,
     mileage,
     openModal,
   } = car;
 
-  const shortAddress = address.split(",").slice(1).join(" ");
   const shortFunctionalities = functionalities[0]
     .split(" ")
     .slice(0, 2)
@@ -50,15 +53,23 @@ export const Car = (car) => {
       accessories,
       functionalities,
       rentalPrice,
-      rentalCompany,
-      address,
+      shortAddress,
       rentalConditions,
       mileage
     );
 
+  const handleFavoriteBtnClick = () => {
+    console.log("Favorite");
+  };
+
   return (
     <CarItem>
-      <Image src={img} alt={description} loading="lazy" />
+      <ImgWrap>
+        <Image src={img} alt={description} loading="lazy" />
+        <FavoriteBtn type="button" onClick={handleFavoriteBtnClick}>
+          <HeartIcon />
+        </FavoriteBtn>
+      </ImgWrap>
 
       <InfoWrap>
         <InfoInnerWrap>
@@ -69,17 +80,19 @@ export const Car = (car) => {
           <MainInfoText>{rentalPrice}</MainInfoText>
         </InfoInnerWrap>
 
-        <OtherDataWrap>
-          <InfoText>{shortAddress}</InfoText>
-          <InfoText>{rentalCompany}</InfoText>
-        </OtherDataWrap>
+        <InfoOtherWrap>
+          <OtherDataWrap>
+            <InfoText>{shortAddress}</InfoText>
+            <InfoText>{rentalCompany}</InfoText>
+          </OtherDataWrap>
 
-        <OtherDataWrap>
-          <InfoText>{type}</InfoText>
-          <InfoText>{model}</InfoText>
-          <InfoText>{id}</InfoText>
-          <InfoText>{shortFunctionalities}</InfoText>
-        </OtherDataWrap>
+          <OtherDataWrap>
+            <InfoText>{type}</InfoText>
+            <InfoText>{model}</InfoText>
+            <InfoText>{id}</InfoText>
+            <InfoText>{shortFunctionalities}</InfoText>
+          </OtherDataWrap>
+        </InfoOtherWrap>
       </InfoWrap>
 
       <LearnMoreBtn type="button" onClick={handleLearnMoreBtnClick}>

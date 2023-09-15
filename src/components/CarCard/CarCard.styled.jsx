@@ -1,32 +1,42 @@
 import styled from "@emotion/styled";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 export const CarItem = styled.li`
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
+`;
 
-   &:hover > div > img::before {
-    opacity: 0.5;
+export const ImgWrap = styled.div`
+  position: relative;
+  margin-bottom: 14px;
 `;
 
 export const Image = styled.img`
-  position: relative;
   width: 274px;
   height: 268px;
-  margin-bottom: 14px;
   object-fit: cover;
   border-radius: 14px;
+`;
 
-  &::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-    background: var(--car-img-overlay-bg-grad);
-    opacity: 0;
-    transition: opacity var(--tra);
-  }
+export const FavoriteBtn = styled.button`
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border: none;
+  color: var(--background-color);
+  background-color: transparent;
+`;
+
+export const HeartIcon = styled(FavoriteBorderOutlinedIcon)`
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 `;
 
 export const InfoWrap = styled.div`
@@ -39,6 +49,12 @@ export const InfoWrap = styled.div`
 export const InfoInnerWrap = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const InfoOtherWrap = styled.div`
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
 `;
 
 export const OtherDataWrap = styled.div`
