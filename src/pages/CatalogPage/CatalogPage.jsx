@@ -18,9 +18,5 @@ export default function CatalogPage() {
     getCars();
   }, []);
 
-  return (
-    <section>
-      <CarList cars={cars} />
-    </section>
-  );
+  return <CarList cars={cars} />;
 }

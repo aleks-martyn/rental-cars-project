@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Car } from "../CarCard";
 import { Modal } from "../Modal";
-import { List } from "./CarList.styled";
+import { Section, List, LoadmoreBtn } from "./CarList.styled";
 
 export const CarList = ({ cars }) => {
   const [showModal, setShowModal] = useState(false);
@@ -57,7 +57,7 @@ export const CarList = ({ cars }) => {
   };
 
   return (
-    <>
+    <Section>
       <List>
         {cars &&
           cars.map(
@@ -102,10 +102,12 @@ export const CarList = ({ cars }) => {
                   mileage={mileage}
                   openModal={toggleModal}
                 />
-              )
+              );
             }
           )}
       </List>
+
+      <LoadmoreBtn type="button">Load more</LoadmoreBtn>
       {showModal && (
         <Modal
           id={id}
@@ -126,6 +128,6 @@ export const CarList = ({ cars }) => {
           onClose={toggleModal}
         />
       )}
-    </>
+    </Section>
   );
 };
