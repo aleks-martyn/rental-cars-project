@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   CarItem,
   ImgWrap,
@@ -34,6 +35,9 @@ export const Car = (car) => {
     openModal,
   } = car;
 
+  const [activeFavoriteBtn, setActiveFavoriteBtn] = useState(false);
+  const toggleFavoriteBtn = () => setActiveFavoriteBtn((prev) => !prev);
+
   const shortFunctionalities = functionalities[0]
     .split(" ")
     .slice(0, 2)
@@ -58,16 +62,16 @@ export const Car = (car) => {
       mileage
     );
 
-  const handleFavoriteBtnClick = () => {
-    console.log("Favorite");
-  };
-
   return (
     <CarItem>
       <ImgWrap>
         <Image src={img} alt={description} loading="lazy" />
-        <FavoriteBtn type="button" onClick={handleFavoriteBtnClick}>
-          <HeartIcon />
+        <FavoriteBtn
+          type="button"
+          activeFavoriteBtn={activeFavoriteBtn}
+          onClick={toggleFavoriteBtn}
+        >
+          <HeartIcon activeFavoriteBtn={activeFavoriteBtn} />
         </FavoriteBtn>
       </ImgWrap>
 

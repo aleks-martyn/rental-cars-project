@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export const CarItem = styled.li`
   border-radius: 14px;
@@ -19,6 +19,11 @@ export const Image = styled.img`
   border-radius: 14px;
 `;
 
+const setBtnColor = (props) =>
+  props.activeFavoriteBtn ? "var(--accent-color)" : "var(--background-color)";
+const setIconFill = (props) =>
+  props.activeFavoriteBtn ? "var(--accent-color)" : "transparent";
+
 export const FavoriteBtn = styled.button`
   position: absolute;
   top: 14px;
@@ -29,14 +34,16 @@ export const FavoriteBtn = styled.button`
   width: 18px;
   height: 18px;
   border: none;
-  color: var(--background-color);
+  color: ${setBtnColor};
   background-color: transparent;
 `;
 
-export const HeartIcon = styled(FavoriteBorderOutlinedIcon)`
+export const HeartIcon = styled(FavoriteIcon)`
   width: 18px;
   height: 18px;
-  fill: currentColor;
+  fill: ${setIconFill};
+  stroke: currentColor;
+  stroke-width: 2px;
 `;
 
 export const InfoWrap = styled.div`
