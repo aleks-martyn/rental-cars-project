@@ -6,8 +6,5 @@ export const Container = styled.div`
   margin-right: auto;
   padding-left: 128px;
   padding-right: 128px;
-  padding-top: 150px;
-  padding-bottom: 150px;
   width: 1440px;
-  height: 100vh;
 `;

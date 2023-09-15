@@ -1,48 +1,29 @@
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 
-export const StyledForm = styled.form`
-  display: flex;
-  gap: 18px;
-  width: 859px;
-  height: 74px;
-  margin-left: auto;
-  margin-right: auto;
+export const StyledHeader = styled.header`
+  padding: 20px 35px;
+  box-shadow: 0px 4px 4px var(--shadow-color);
 `;
 
-export const Wrap = styled.div`
+export const StyledNav = styled.nav`
   display: flex;
-  gap: 8px;
-  flex-direction: column;
-  justify-content: space-between;
+  gap: 70px;
+  justify-content: center;
 `;
 
-export const InputWrap = styled.div`
-  display: flex;
-`;
-
-export const Subtitle = styled.label`
+export const StyledNavLink = styled(NavLink)`
+  font-size: 24px;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1.29;
   color: var(--secondary-text-color);
-`;
+  transition: color var(--tra);
 
-export const SearchBtn = styled.button`
-  min-width: 136px;
-  height: 48px;
-  padding: 14px 44px;
-  align-self: end;
-  border: none;
-  border-radius: 12px;
-  text-align: center;
-  color: var(--button-text-color);
-  background-color: var(--accent-color);
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.43;
-  transition: background-color var(--tra);
+  &.active {
+    color: var(--accent-color);
+  }
 
-  &:hover {
-    background-color: var(--button-active-color);
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 `;
