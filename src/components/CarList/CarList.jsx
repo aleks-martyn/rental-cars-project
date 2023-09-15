@@ -17,8 +17,7 @@ export const CarList = ({ cars }) => {
   const [accessories, setAccessories] = useState([]);
   const [functionalities, setFunctionalities] = useState([]);
   const [rentalPrice, setRentalPrice] = useState("");
-  const [rentalCompany, setRentalCompany] = useState("");
-  const [address, setAddress] = useState("");
+  const [shortAddress, setShortAddress] = useState("");
   const [rentalConditions, setRentalConditions] = useState("");
   const [mileage, setMileage] = useState(null);
 
@@ -35,8 +34,7 @@ export const CarList = ({ cars }) => {
     accessories,
     functionalities,
     rentalPrice,
-    rentalCompany,
-    address,
+    shortAddress,
     rentalConditions,
     mileage
   ) => {
@@ -53,8 +51,7 @@ export const CarList = ({ cars }) => {
     setAccessories(accessories);
     setFunctionalities(functionalities);
     setRentalPrice(rentalPrice);
-    setRentalCompany(rentalCompany);
-    setAddress(address);
+    setShortAddress(shortAddress);
     setRentalConditions(rentalConditions);
     setMileage(mileage);
   };
@@ -81,28 +78,32 @@ export const CarList = ({ cars }) => {
               address,
               rentalConditions,
               mileage,
-            }) => (
-              <Car
-                key={id}
-                id={id}
-                year={year}
-                make={make}
-                model={model}
-                type={type}
-                img={img}
-                description={description}
-                fuelConsumption={fuelConsumption}
-                engineSize={engineSize}
-                accessories={accessories}
-                functionalities={functionalities}
-                rentalPrice={rentalPrice}
-                rentalCompany={rentalCompany}
-                address={address}
-                rentalConditions={rentalConditions}
-                mileage={mileage}
-                openModal={toggleModal}
-              />
-            )
+            }) => {
+              const shortAddress = address.split(",").slice(1).join(" ");
+
+              return (
+                <Car
+                  key={id}
+                  id={id}
+                  year={year}
+                  make={make}
+                  model={model}
+                  type={type}
+                  img={img}
+                  description={description}
+                  fuelConsumption={fuelConsumption}
+                  engineSize={engineSize}
+                  accessories={accessories}
+                  functionalities={functionalities}
+                  rentalPrice={rentalPrice}
+                  rentalCompany={rentalCompany}
+                  shortAddress={shortAddress}
+                  rentalConditions={rentalConditions}
+                  mileage={mileage}
+                  openModal={toggleModal}
+                />
+              )
+            }
           )}
       </List>
       {showModal && (
@@ -119,8 +120,7 @@ export const CarList = ({ cars }) => {
           accessories={accessories}
           functionalities={functionalities}
           rentalPrice={rentalPrice}
-          rentalCompany={rentalCompany}
-          address={address}
+          shortAddress={shortAddress}
           rentalConditions={rentalConditions}
           mileage={mileage}
           onClose={toggleModal}
