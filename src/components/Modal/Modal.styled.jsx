@@ -19,7 +19,7 @@ export const ModalWin = styled.div`
   position: relative;
   box-sizing: border-box;
   width: 541px;
-  height: 752px;
+  min-height: 752px;
   padding: 40px;
   border-radius: 24px;
   background-color: var(--background-color);
