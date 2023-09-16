@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   CarItem,
   ImgWrap,
@@ -39,6 +39,16 @@ export const Car = (car) => {
   const [activeFavoriteBtn, setActiveFavoriteBtn] = useState(false);
   const [favoriteCarId, setFavoriteCarId] = useState(null);
   const LOCALSTORAGE_KEY = "favorite-cars";
+
+  useEffect(() => {
+    try {
+      const items = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+      const el = items.find(item => item.id === id.toString())
+      if(el) setActiveFavoriteBtn(true)
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [id])
 
   if (activeFavoriteBtn) {
     addCarToList(LOCALSTORAGE_KEY, favoriteCarId);
