@@ -20,9 +20,12 @@ export const Image = styled.img`
 `;
 
 const setBtnColor = (props) =>
-  props.activeFavoriteBtn ? "var(--accent-color)" : "var(--background-color)";
+  props.activefavoritebtn === "true"
+    ? "var(--accent-color)"
+    : "var(--background-color)";
+    
 const setIconFill = (props) =>
-  props.activeFavoriteBtn ? "var(--accent-color)" : "transparent";
+  props.activefavoritebtn === "true" ? "var(--accent-color)" : "transparent";
 
 export const FavoriteBtn = styled.button`
   position: absolute;

@@ -13,6 +13,7 @@ import {
   InfoText,
   LearnMoreBtn,
 } from "./CarCard.styled";
+import { addCarToList, deleteCarFromList } from "./localStorageFunctions";
 
 export const Car = (car) => {
   const {
@@ -36,7 +37,19 @@ export const Car = (car) => {
   } = car;
 
   const [activeFavoriteBtn, setActiveFavoriteBtn] = useState(false);
-  const toggleFavoriteBtn = () => setActiveFavoriteBtn((prev) => !prev);
+  const [favoriteCarId, setFavoriteCarId] = useState(null);
+  const LOCALSTORAGE_KEY = "favorite-cars";
+
+  if (activeFavoriteBtn) {
+    addCarToList(LOCALSTORAGE_KEY, favoriteCarId);
+  } else {
+    deleteCarFromList(LOCALSTORAGE_KEY, favoriteCarId);
+  }
+
+  const toggleFavoriteBtn = (event) => {
+    setActiveFavoriteBtn((prev) => !prev);
+    setFavoriteCarId(event.currentTarget.dataset.carid);
+  };
 
   const shortFunctionalities = functionalities[0]
     .split(" ")
@@ -68,10 +81,11 @@ export const Car = (car) => {
         <Image src={img} alt={description} loading="lazy" />
         <FavoriteBtn
           type="button"
-          activeFavoriteBtn={activeFavoriteBtn}
+          activefavoritebtn={activeFavoriteBtn.toString()}
           onClick={toggleFavoriteBtn}
+          data-carid={id}
         >
-          <HeartIcon activeFavoriteBtn={activeFavoriteBtn} />
+          <HeartIcon activefavoritebtn={activeFavoriteBtn.toString()} />
         </FavoriteBtn>
       </ImgWrap>
 
