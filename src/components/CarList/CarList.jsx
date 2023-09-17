@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Car } from "../CarCard";
 import { Modal } from "../Modal";
-import { Section, List, LoadmoreBtn } from "./CarList.styled";
+import { Section, List } from "./CarList.styled";
 
 export const CarList = ({ cars }) => {
   const [showModal, setShowModal] = useState(false);
@@ -79,7 +79,7 @@ export const CarList = ({ cars }) => {
               rentalConditions,
               mileage,
             }) => {
-              const shortAddress = address.split(",").slice(1).join(" ");
+              const shortAddress = address?.split(",").slice(1).join(" ");
 
               return (
                 <Car
@@ -107,7 +107,6 @@ export const CarList = ({ cars }) => {
           )}
       </List>
 
-      <LoadmoreBtn type="button">Load more</LoadmoreBtn>
       {showModal && (
         <Modal
           id={id}
