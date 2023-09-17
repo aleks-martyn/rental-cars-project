@@ -1,9 +1,6 @@
-//import logo from "./logo.svg";
-//import "./App.css";
 import { lazy } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
-//import { Spinner } from "./components/Loader";
 
 const HomePage = lazy(() => import("../src/pages/HomePage"));
 const CatalogPage = lazy(() => import("../src/pages/CatalogPage"));
