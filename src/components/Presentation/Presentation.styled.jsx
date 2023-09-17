@@ -12,7 +12,12 @@ export const Wrap = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 20px;
+  color: var(--accent-color);
 `;
 
 export const Description = styled.p`
+  text-align: start;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--accent-color);
 `;
